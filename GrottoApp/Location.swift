@@ -8,17 +8,12 @@
 import SwiftUI
 import MapKit
 import CoreLocation
-
-struct Location: Identifiable, Hashable{
+struct Location: Identifiable, Hashable {
     let id = UUID()
     let coordinate: CLLocationCoordinate2D
     let title: String
     let body: String
-    let imageName: String
-    
-    
-    
-    
+    let imageURL: String??
     
     func hash(into hasher: inout Hasher) {
         hasher.combine(id)
@@ -28,6 +23,5 @@ struct Location: Identifiable, Hashable{
     static func == (lhs: Location, rhs: Location) -> Bool {
         return lhs.id == rhs.id
     }
-    
     
 }
