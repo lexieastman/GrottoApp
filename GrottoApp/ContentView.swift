@@ -1,25 +1,38 @@
-//
-//  ContentView.swift
-//  GrottoApp
-//
-//  Created by Alexandra Eastman on 11/19/24.
-//
-
 import SwiftUI
 
 struct ContentView: View {
-    @State private var selectedLocation: Location?  // Track selected location
+    @State private var selectedLocation: Location?
     @State private var showSheet = false
-    @StateObject private var locationManager = LocationManager() // Create LocationManager instance
+    @StateObject private var locationManager = LocationManager() // Manage locations
 
     var body: some View {
-        MapView(locationManager: locationManager, locations:Locations,selectedLocation: $selectedLocation) // Pass the locationManager instance
-            .edgesIgnoringSafeArea(.all)
+        NavigationView {
+            VStack {
+                MapView(
+                    locationManager: locationManager,
+                    selectedLocation: $selectedLocation
+                )
+            }
+            .onAppear {
+                locationManager.fetchLocations() // Load locations on view appear
+            }
+            .onChange(of: selectedLocation) { oldValue, newValue in
+                if newValue != nil {
+                    showSheet = true
+                }
+            }
+            .sheet(isPresented: $showSheet, onDismiss: { selectedLocation = nil }) {
+                if let selectedLocation = selectedLocation {
+                    ScrollView {
+                        ItemView(location: selectedLocation)
+                    }
+                }
+            }
+        }
     }
 }
-    
 
-#Preview{
+#Preview {
     ContentView()
 }
 
