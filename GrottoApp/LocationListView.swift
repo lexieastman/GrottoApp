@@ -39,7 +39,7 @@ class DatabaseManager {
 
         // Execute the query and fetch rows
         while sqlite3_step(statement) == SQLITE_ROW {
-            let id = sqlite3_column_int(statement, 0)
+            //let id = sqlite3_column_int(statement, 0)
             let title = String(cString: sqlite3_column_text(statement, 1))
 
             // Extract latitude and longitude (columns 2 and 3)

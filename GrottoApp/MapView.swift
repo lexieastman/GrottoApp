@@ -48,17 +48,17 @@ struct MapView: UIViewRepresentable {
             if  !context.coordinator.hasCenteredOnUser {
                 let region = MKCoordinateRegion(
                     center: userLocation.coordinate,
-                    span: MKCoordinateSpan(latitudeDelta: 0.001, longitudeDelta: 0.001)
+                    span: MKCoordinateSpan(latitudeDelta: 0.00025, longitudeDelta: 0.00025)
                 )
                 uiView.setRegion(region, animated: true)
                 context.coordinator.hasCenteredOnUser = true  // Mark as centered
             }}
         else {
             // If user location is not available, set a default region
-            let defaultCoordinate = CLLocationCoordinate2D(latitude: 39.6825, longitude: -77.3578) // Example: Emmitsburg, MD
+            let defaultCoordinate = CLLocationCoordinate2D(latitude: 39.682, longitude:  -77.35697) // Example: Emmitsburg, MD
             let defaultRegion = MKCoordinateRegion(
                 center: defaultCoordinate,
-                span: MKCoordinateSpan(latitudeDelta: 0.01, longitudeDelta: 0.01)
+                span: MKCoordinateSpan(latitudeDelta: 0.005, longitudeDelta: 0.005)
             )
             uiView.setRegion(defaultRegion, animated: true)
         }

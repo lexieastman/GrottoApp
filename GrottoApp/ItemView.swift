@@ -26,23 +26,23 @@ struct ItemView: View {
                     case .success(let image):
                         image.resizable()
                             .scaledToFill()
-                            .frame(width: 200, height: 200) // Adjusted for larger image
+                            .frame(width: 350) // Adjusted for larger image
                             .clipShape(RoundedRectangle(cornerRadius: 8))
                     case .failure:
-                        Image("grotto pic")
+                        Image("default")
                             .resizable()
                             .scaledToFit()
-                            .frame(width: 200, height: 200)
+                            .frame(width: 350)
                             .opacity(0.5)
                     @unknown default:
                         EmptyView()
                     }
                 }
             } else {
-                Image("grotto pic") // Default if no URL
+                Image("default") // Default if no URL
                     .resizable()
                     .scaledToFit()
-                    .frame(width: 200, height: 200)
+                    .frame(width: 350)
                     .opacity(0.5)
             }
             

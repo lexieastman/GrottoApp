@@ -19,10 +19,11 @@ struct MainNavigationView: View {
                     .resizable()
                     .scaledToFit()
                 
-                Image("grotto pic")
+                Image("mary")
                     .resizable()
-                    .scaledToFit()
-                    .frame(width: 450)
+                    .scaledToFill()
+                    .frame(width: 450, height:375, alignment: .top)
+                    .clipped()
                 NavigationLink(destination: AboutView()) {
                     Text("About the Grotto")
                 }
@@ -41,7 +42,7 @@ struct MainNavigationView: View {
                 
             }
             
-            Text("Please ensure location services are enabled (settings>apps>Grotto>Location>\"While Using the App\" [set to on]). \n The map feature works accurately when you are within 100 meters of the Grotto.")
+            Text("Please ensure location services are enabled (settings>apps>Grotto>Location>\"While Using the App\" [set to on]). \n The map feature works accurately when you are in close Proximity to the Grotto.")
                 .font(.caption2)
             
             
